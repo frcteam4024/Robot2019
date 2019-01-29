@@ -25,14 +25,20 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
 
 
-  //Robot Controls
-  public static int xBox = 0;
-  public static int joystick = 1;
-  public static int buttonBoard = 2;
+  //Robot Controlers
+  public static int XBOX_CONTROLLER = 0;
+  public static int BIG_JOYSTICK = 1;
+  public static int BUTTON_BOARD = 2;
+
+  //xBox Buttons
+  public static int X_AXIS_LEFT = 0;
+  public static int Y_AXIS_LEFT = 1;
+  public static int X_AXIS_RIGHT = 4;
+  public static int Y_AXIS_RIGHT = 5;
 
   //Motor Controllers
-  public static int frontRightTalon = 4;
-  public static int frontLeftTalon = 1;
-  public static int backRightTalon = 3;
-  public static int backLeftTalon = 2;
+  public final static int FRONT_RIGHT = 4;
+  public final static int FRONT_LEFT = 1;
+  public final static int BACK_RIGHT = 3;
+  public final static int BACK_LEFT = 2;
 }
