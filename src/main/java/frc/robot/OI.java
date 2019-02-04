@@ -8,8 +8,11 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Trigger;
+import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
+import frc.robot.commands.DecreaseDrivetrainSpeed;
+import frc.robot.commands.IncreaseDrivetrainSpeed;
 
 
 /**
@@ -48,8 +51,12 @@ public class OI {
   public final Joystick xboxController = new Joystick(RobotMap.XBOX_CONTROLLER);
   public final Joystick bigJoystick = new Joystick(RobotMap.BIG_JOYSTICK);
   public final Joystick buttonBoard = new Joystick(RobotMap.BUTTON_BOARD); //This one is a joystick because of the knobs
-
-  public final Trigger rightTrigger = new JoystickButton(xboxController, 3);
   
-
+  private Button leftBumper = new JoystickButton(xboxController, 5);
+  private Button rightBumper = new JoystickButton(xboxController, 6);
+  
+  public OI() {
+    leftBumper.whenPressed(new DecreaseDrivetrainSpeed());
+    rightBumper.whenPressed(new IncreaseDrivetrainSpeed());
+  }
 }
