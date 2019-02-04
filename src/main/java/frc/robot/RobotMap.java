@@ -25,20 +25,31 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
 
 
-  //Robot Controlers
-  public static int XBOX_CONTROLLER = 0;
-  public static int BIG_JOYSTICK = 1;
-  public static int BUTTON_BOARD = 2;
+  //Robot Controllers
+  public static final int XBOX_CONTROLLER = 0;
+  public static final int BIG_JOYSTICK = 1;
+  public static final int BUTTON_BOARD = 2;
+
+  //Big Joystick Buttons
+  public static final int BIGJOYSTICK_X_AXIS = 1;
+  public static final int BIGJOYSTICK_Y_AXIS = 2;
 
   //xBox Buttons
-  public static int X_AXIS_LEFT = 0;
-  public static int Y_AXIS_LEFT = 1;
-  public static int X_AXIS_RIGHT = 4;
-  public static int Y_AXIS_RIGHT = 5;
+  public static final int X_AXIS_LEFT = 0;
+  public static final int Y_AXIS_LEFT = 1;
+  public static final int X_AXIS_RIGHT = 4;
+  public static final int Y_AXIS_RIGHT = 5;
 
   //Motor Controllers
-  public final static int FRONT_RIGHT = 4;
-  public final static int FRONT_LEFT = 1;
-  public final static int BACK_RIGHT = 3;
-  public final static int BACK_LEFT = 2;
+  public static final int FRONT_RIGHT = 4;
+  public static final int FRONT_LEFT = 1;
+  public static final int BACK_RIGHT = 3;
+  public static final int BACK_LEFT = 2;
+
+  public static final int LIFT_ARM_TALON = 0;
+
+  //Physical Constants
+  public static final double TIME_TO_LEVEL1 = 2;
+  public static final double TIME_TO_LEVEL2 = 4;
+  public static final double TIME_TO_LEVEL3 = 6;
 }

@@ -13,6 +13,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import frc.robot.commands.DecreaseDrivetrainSpeed;
 import frc.robot.commands.IncreaseDrivetrainSpeed;
+import frc.robot.commands.RaiseLiftLevelOne;
+import frc.robot.commands.RaiseLiftLevelThree;
+import frc.robot.commands.RaiseLiftLevelTwo;
 
 
 /**
@@ -54,9 +57,16 @@ public class OI {
   
   private Button leftBumper = new JoystickButton(xboxController, 5);
   private Button rightBumper = new JoystickButton(xboxController, 6);
+  private Button liftLevel1 = new JoystickButton(buttonBoard, 1);
+  private Button liftLevel2 = new JoystickButton(buttonBoard, 2);
+  private Button liftLevel3 = new JoystickButton(buttonBoard, 3);
   
   public OI() {
     leftBumper.whenPressed(new DecreaseDrivetrainSpeed());
     rightBumper.whenPressed(new IncreaseDrivetrainSpeed());
+
+    liftLevel1.whenPressed(new RaiseLiftLevelOne());
+    liftLevel2.whenPressed(new RaiseLiftLevelTwo());
+    liftLevel3.whenPressed(new RaiseLiftLevelThree());
   }
 }
