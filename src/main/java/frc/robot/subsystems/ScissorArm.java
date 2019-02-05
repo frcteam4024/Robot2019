@@ -7,40 +7,35 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+import frc.robot.commands.CloseArm;
 import frc.robot.RobotMap;
-import frc.robot.commands.ClimbStep;;
 
 /**
  * Add your docs here.
  */
-public class PodiumLift extends Subsystem {
+public class ScissorArm extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private static DoubleSolenoid wheelLift = null;
-  private static DoubleSolenoid frontLift = null;
 
-  public PodiumLift() {
-    wheelLift = new DoubleSolenoid(RobotMap.FORWARD_BACK_CHANNEL, RobotMap.REVERSE_BACK_CHANNEL);
-    frontLift = new DoubleSolenoid(RobotMap.FORWARD_FRONT_CHANNEL, RobotMap.REVERSE_FRONT_CHANNEL);
+  private WPI_TalonSRX clawTalon = null;
+
+  public ScissorArm() {
+    clawTalon = new WPI_TalonSRX(RobotMap.SCISSOR_ARM_TALON);
   }
 
-  public void podiumClimb() {
-    wheelLift.set(Value.kForward);
-    frontLift.set(Value.kForward);
-  }
-
-  public void retractWheels() {
-    wheelLift.set(Value.kReverse);
-    frontLift.set(Value.kReverse);
+  public void clamp(double speed) {
+    clawTalon.set(ControlMode.PercentOutput, speed);
   }
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new ClimbStep());
+    setDefaultCommand(new CloseArm());
   }
 }

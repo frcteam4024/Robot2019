@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveCartesian;
 
-public class DriveTrain extends Subsystem {
+public class Drivetrain extends Subsystem {
 
     private WPI_TalonSRX frontRight = null;
     private WPI_TalonSRX frontLeft = null;
@@ -19,7 +19,7 @@ public class DriveTrain extends Subsystem {
     private int dIndex = 0;
     private int[] dividers = {1, 2, 4};
 
-    public DriveTrain() {
+    public Drivetrain() {
         /*
          * The declaration numbers are to keep track of which motor controller is which.
          * Using the RobotMap class reduces the number of unexplained numbers (also

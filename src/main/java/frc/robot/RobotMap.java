@@ -30,6 +30,9 @@ public class RobotMap {
   public static final int BIG_JOYSTICK = 1;
   public static final int BUTTON_BOARD = 2;
 
+  //Button Board Buttons
+  public static final int BIG_RED_BUTTON = 11;
+
   //Big Joystick Buttons
   public static final int BIGJOYSTICK_X_AXIS = 1;
   public static final int BIGJOYSTICK_Y_AXIS = 2;
@@ -46,7 +49,14 @@ public class RobotMap {
   public static final int BACK_RIGHT = 3;
   public static final int BACK_LEFT = 2;
 
-  public static final int LIFT_ARM_TALON = 0;
+  public static final int LIFT_ARM_TALON = 5;
+  public static final int SCISSOR_ARM_TALON = 6;
+
+  //Solenoids
+  public static final int FORWARD_BACK_CHANNEL = 0;
+  public static final int REVERSE_BACK_CHANNEL = 1;
+  public static final int FORWARD_FRONT_CHANNEL = 2;
+  public static final int REVERSE_FRONT_CHANNEL = 3;
 
   //Physical Constants
   public static final double TIME_TO_LEVEL1 = 2;
