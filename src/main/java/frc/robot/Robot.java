@@ -42,12 +42,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    oi = new OI();
+    
     drivetrain = new Drivetrain();
     liftArm = new LiftArm();
     robotLift = new PodiumLift();
     scissorArm = new ScissorArm();
-    
+    oi = new OI();
+
     chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", chooser);

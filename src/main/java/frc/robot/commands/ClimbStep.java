@@ -29,7 +29,10 @@ public class ClimbStep extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (Robot.oi.buttonBoard.getRawButton(RobotMap.BIG_RED_BUTTON)) {
+    if (wasEnabled && Robot.oi.buttonBoard.getRawButton(RobotMap.BIG_RED_BUTTON)) {
+      Robot.robotLift.retractWheels();
+      wasEnabled = false;
+    } else if (Robot.oi.buttonBoard.getRawButton(RobotMap.BIG_RED_BUTTON)) {
       Robot.robotLift.podiumClimb();
       wasEnabled = true;
     }
@@ -45,16 +48,12 @@ public class ClimbStep extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    if (wasEnabled && !Robot.oi.buttonBoard.getRawButton(RobotMap.BIG_RED_BUTTON)) {
-      Robot.robotLift.retractWheels();
-      wasEnabled = false;
-    }
+    
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
   }
 }

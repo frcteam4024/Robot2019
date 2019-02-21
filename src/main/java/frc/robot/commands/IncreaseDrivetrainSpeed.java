@@ -31,14 +31,14 @@ public class IncreaseDrivetrainSpeed extends InstantCommand {
   @Override
   protected void initialize() {
     boolean executed = Robot.drivetrain.increaseSpeed();
-    SendableChooser<InstantCommand> result = new SendableChooser<>();
-    if (executed) {
-      result.setDefaultOption("Speed is as low as possible.", new DecreaseDrivetrainSpeed());
-      SmartDashboard.putData(result);
-    } else {
-      result.setDefaultOption("Speed was decreased.", new DecreaseDrivetrainSpeed());
-      SmartDashboard.putData(result);
-    }
+    // SendableChooser<InstantCommand> result = new SendableChooser<>();
+    // if (executed) {
+    //   result.setDefaultOption("Speed is as low as possible.", new DecreaseDrivetrainSpeed());
+    //   SmartDashboard.putData(result);
+    // } else {
+    //   result.setDefaultOption("Speed was decreased.", new DecreaseDrivetrainSpeed());
+    //   SmartDashboard.putData(result);
+    // }
   }
 
 }

@@ -26,9 +26,11 @@ public class CloseArm extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double speed = Robot.oi.bigJoystick.getRawAxis(RobotMap.BIGJOYSTICK_X_AXIS);
-    if (speed > 0.3) {
-      Robot.scissorArm.clamp(speed);
+    double speedX = Robot.oi.bigJoystick.getRawAxis(RobotMap.BIGJOYSTICK_X_AXIS);
+    double speedY = Robot.oi.bigJoystick.getRawAxis(RobotMap.BIGJOYSTICK_Y_AXIS);
+    Robot.oi.bigJoystick.getRawAxis(RobotMap.FINGER_BUTTON);
+    if (Math.abs(speedX) > 0.3 && Math.abs(speedX) > Math.abs(speedY)) {
+      Robot.scissorArm.clamp(speedX);
     }
 
   }

@@ -25,6 +25,8 @@ public class PodiumLift extends Subsystem {
   public PodiumLift() {
     wheelLift = new DoubleSolenoid(RobotMap.FORWARD_BACK_CHANNEL, RobotMap.REVERSE_BACK_CHANNEL);
     frontLift = new DoubleSolenoid(RobotMap.FORWARD_FRONT_CHANNEL, RobotMap.REVERSE_FRONT_CHANNEL);
+    //wheelLift.set(Value.kOff);
+    //frontLift.set(Value.kOff);
   }
 
   public void podiumClimb() {
