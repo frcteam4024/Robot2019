@@ -15,6 +15,8 @@ import frc.robot.RobotMap;
  * Add your docs here.
  */
 public class RaiseLiftLevelOne extends InstantCommand {
+
+  private boolean isUp;
   /**
    * Add your docs here.
    */
@@ -22,14 +24,24 @@ public class RaiseLiftLevelOne extends InstantCommand {
     super();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.liftArm);
+    requires(Robot.liftSystem);
+  }
+
+  public RaiseLiftLevelOne(boolean liftLevel) {
+    super();
+    isUp = liftLevel;
+    requires(Robot.liftSystem);
   }
 
   // Called once when the command executes
   @Override
   protected void initialize() {
-    setTimeout(RobotMap.TIME_TO_LEVEL1);  
-    Robot.liftArm.raiseArm();
+    setTimeout(RobotMap.TIME_TO_LEVEL1); 
+    if (isUp) { 
+      Robot.liftSystem.raiseLift();
+    } else {
+      Robot.liftSystem.lowerLift();
+    }
   }
 
 }

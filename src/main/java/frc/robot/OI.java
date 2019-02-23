@@ -61,12 +61,19 @@ public class OI {
   private Button liftLevel2 = new JoystickButton(buttonBoard, 2);
   private Button liftLevel3 = new JoystickButton(buttonBoard, 3);
   
+  //Up and Down controlls
+  private boolean liftAtLevel1 = false;
+  private boolean liftAtLevel2 = false;
+  private boolean liftAtLevel3 = false;
+
+
   public OI() {
     leftBumper.whenPressed(new DecreaseDrivetrainSpeed());
     rightBumper.whenPressed(new IncreaseDrivetrainSpeed());
 
-    liftLevel1.whenPressed(new RaiseLiftLevelOne());
-    liftLevel2.whenPressed(new RaiseLiftLevelTwo());
-    liftLevel3.whenPressed(new RaiseLiftLevelThree());
+    
+    liftLevel1.whenPressed(new RaiseLiftLevelOne(liftAtLevel1));
+    liftLevel2.whenPressed(new RaiseLiftLevelTwo(liftAtLevel2));
+    liftLevel3.whenPressed(new RaiseLiftLevelThree(liftAtLevel3));
   }
 }

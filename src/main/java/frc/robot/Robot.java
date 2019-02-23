@@ -12,11 +12,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.LiftArm;
+import frc.robot.subsystems.LiftSystem;
 import frc.robot.subsystems.PodiumLift;
-import frc.robot.subsystems.ScissorArm;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,9 +27,8 @@ public class Robot extends TimedRobot {
 
   public static OI oi = null;
   public static Drivetrain drivetrain = null;
-  public static LiftArm liftArm = null;
+  public static LiftSystem liftSystem = null;
   public static PodiumLift robotLift = null;
-  public static ScissorArm scissorArm = null;
 
   Command autonomousCommand;
   SendableChooser<Command> chooser = new SendableChooser<>();
@@ -44,12 +41,11 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     
     drivetrain = new Drivetrain();
-    liftArm = new LiftArm();
+    liftSystem = new LiftSystem();
     robotLift = new PodiumLift();
-    scissorArm = new ScissorArm();
     oi = new OI();
 
-    chooser.setDefaultOption("Default Auto", new ExampleCommand());
+    //chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", chooser);
   }
