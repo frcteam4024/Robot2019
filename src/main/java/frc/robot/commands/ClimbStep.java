@@ -13,7 +13,7 @@ import frc.robot.RobotMap;
 
 public class ClimbStep extends Command {
 
-  private boolean wasEnabled = false;
+  private Boolean wasEnabled = null;
 
   public ClimbStep() {
     // Use requires() here to declare subsystem dependencies
@@ -29,12 +29,17 @@ public class ClimbStep extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (wasEnabled && Robot.oi.buttonBoard.getRawButton(RobotMap.BIG_RED_BUTTON)) {
-      Robot.robotLift.retractWheels();
-      wasEnabled = false;
-    } else if (Robot.oi.buttonBoard.getRawButton(RobotMap.BIG_RED_BUTTON)) {
+    if (wasEnabled == null && Robot.oi.buttonBoard.getRawButton(RobotMap.BIG_RED_BUTTON)) {
       Robot.robotLift.podiumClimb();
       wasEnabled = true;
+    } else if (wasEnabled != null) {
+      if (wasEnabled && Robot.oi.buttonBoard.getRawButton(RobotMap.BIG_RED_BUTTON)) {
+        Robot.robotLift.retractCasterWheel();
+        wasEnabled = false;
+      } else if (!wasEnabled && Robot.oi.buttonBoard.getRawButton(RobotMap.BIG_RED_BUTTON)) {
+        Robot.robotLift.retractRearWheels();
+        wasEnabled = null;
+      }
     }
     
   }

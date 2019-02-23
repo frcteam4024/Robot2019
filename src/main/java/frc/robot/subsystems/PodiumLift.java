@@ -23,8 +23,8 @@ public class PodiumLift extends Subsystem {
   private static DoubleSolenoid frontLift = null;
 
   public PodiumLift() {
-    wheelLift = new DoubleSolenoid(RobotMap.FORWARD_BACK_CHANNEL, RobotMap.REVERSE_BACK_CHANNEL);
-    frontLift = new DoubleSolenoid(RobotMap.FORWARD_FRONT_CHANNEL, RobotMap.REVERSE_FRONT_CHANNEL);
+    wheelLift = new DoubleSolenoid(RobotMap.BACK_DOWN_CHANNEL, RobotMap.BACK_UP_CHANNEL);
+    frontLift = new DoubleSolenoid(RobotMap.FRONT_DOWN_CHANNEL, RobotMap.FRONT_UP_CHANNEL);
     //wheelLift.set(Value.kOff);
     //frontLift.set(Value.kOff);
   }
@@ -37,6 +37,14 @@ public class PodiumLift extends Subsystem {
   public void retractWheels() {
     wheelLift.set(Value.kReverse);
     frontLift.set(Value.kReverse);
+  }
+
+  public void retractCasterWheel() {
+    frontLift.set(Value.kReverse);
+  }
+
+  public void retractRearWheels() {
+    wheelLift.set(Value.kReverse);
   }
 
   @Override

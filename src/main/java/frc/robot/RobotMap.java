@@ -46,18 +46,19 @@ public class RobotMap {
 
   //Motor Controllers
   public static final int FRONT_RIGHT = 4;
-  public static final int FRONT_LEFT = 1;
-  public static final int BACK_RIGHT = 3;
-  public static final int BACK_LEFT = 2;
+  public static final int FRONT_LEFT = 6;
+  public static final int BACK_RIGHT = 5;
+  public static final int BACK_LEFT = 0;
 
-  public static final int LIFT_ARM_TALON = 5;
-  public static final int SCISSOR_ARM_TALON = 6;
+  public static final int LIFT_ARM_TALON = 1;
+  public static final int SCISSOR_ARM_TALON = 2;
+  public static final int ROTATE_SCISSOR_ARM = 3;
 
   //Solenoids
-  public static final int FORWARD_BACK_CHANNEL = 0;
-  public static final int REVERSE_BACK_CHANNEL = 1;
-  public static final int FORWARD_FRONT_CHANNEL = 2;
-  public static final int REVERSE_FRONT_CHANNEL = 3;
+  public static final int FRONT_DOWN_CHANNEL = 0;
+  public static final int FRONT_UP_CHANNEL = 1;
+  public static final int BACK_DOWN_CHANNEL = 6;
+  public static final int BACK_UP_CHANNEL = 7;
 
   //Physical Constants
   public static final double TIME_TO_LEVEL1 = 2;
