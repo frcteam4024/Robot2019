@@ -55,8 +55,15 @@ public class OI {
   public final Joystick bigJoystick = new Joystick(RobotMap.BIG_JOYSTICK);
   public final Joystick buttonBoard = new Joystick(RobotMap.BUTTON_BOARD); //This one is a joystick because of the knobs
   
+  //XBox Buttons
   private Button leftBumper = new JoystickButton(xboxController, 5);
   private Button rightBumper = new JoystickButton(xboxController, 6);
+  private Button turnRight90 = new JoystickButton(xboxController, 2);
+  private Button turnLeft90 = new JoystickButton(xboxController, 3);
+  private Button turnRight45 = new JoystickButton(xboxController, 4);
+  private Button turnLeft45 = new JoystickButton(xboxController, 1);
+
+  //Button Board Buttons
   private Button liftLevel1 = new JoystickButton(buttonBoard, 1);
   private Button liftLevel2 = new JoystickButton(buttonBoard, 2);
   private Button liftLevel3 = new JoystickButton(buttonBoard, 3);
