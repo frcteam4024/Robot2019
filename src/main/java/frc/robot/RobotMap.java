@@ -34,8 +34,8 @@ public class RobotMap {
   public static final int BIG_RED_BUTTON = 11;
 
   //Big Joystick Buttons
-  public static final int BIGJOYSTICK_X_AXIS = 1;
-  public static final int BIGJOYSTICK_Y_AXIS = 2;
+  public static final int BIGJOYSTICK_X_AXIS = 0;
+  public static final int BIGJOYSTICK_Y_AXIS = 1;
   public static final int FINGER_BUTTON = 1;
 
   //xBox Buttons

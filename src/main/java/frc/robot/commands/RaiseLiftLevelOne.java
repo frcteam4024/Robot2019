@@ -37,10 +37,12 @@ public class RaiseLiftLevelOne extends InstantCommand {
   @Override
   protected void initialize() {
     setTimeout(RobotMap.TIME_TO_LEVEL1); 
-    if (isUp) { 
-      Robot.liftSystem.raiseLift();
-    } else {
-      Robot.liftSystem.lowerLift();
+    while(!isTimedOut()) {
+      if (isUp) {
+        Robot.liftSystem.lowerLift();
+      } else {
+        Robot.liftSystem.raiseLift();
+      }
     }
   }
 

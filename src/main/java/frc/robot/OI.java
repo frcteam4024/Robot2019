@@ -64,9 +64,9 @@ public class OI {
   private Button turnLeft45 = new JoystickButton(xboxController, 1);
 
   //Button Board Buttons
-  private Button liftLevel1 = new JoystickButton(buttonBoard, 1);
-  private Button liftLevel2 = new JoystickButton(buttonBoard, 2);
-  private Button liftLevel3 = new JoystickButton(buttonBoard, 3);
+  private Button liftLevel1 = new JoystickButton(buttonBoard, 9);
+  private Button liftLevel2 = new JoystickButton(buttonBoard, 7);
+  private Button liftLevel3 = new JoystickButton(buttonBoard, 6);
   
   //Up and Down controlls
   private boolean liftAtLevel1 = false;
