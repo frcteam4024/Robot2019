@@ -13,7 +13,7 @@ import frc.robot.commands.LiftDrive;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
- 
+import com.revrobotics.CANSparkMax;
 
 /**
  * Add your docs here.
@@ -23,6 +23,8 @@ public class LiftSystem extends Subsystem {
   // here. Call these from Commands.
 
   private WPI_TalonSRX liftTalon = null;
+  private CANSparkMax masterLiftSpark = null;
+  private CANSparkMax slaveLiftSpark = null;
   private WPI_TalonSRX rotateTalon = null;
   private WPI_TalonSRX scissorTalon = null;
 
