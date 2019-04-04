@@ -13,7 +13,9 @@ import frc.robot.commands.LiftDrive;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 /**
  * Add your docs here.
@@ -29,15 +31,18 @@ public class LiftSystem extends Subsystem {
   private WPI_TalonSRX scissorTalon = null;
 
   public LiftSystem() {
-    liftTalon = new WPI_TalonSRX(RobotMap.LIFT_ARM_TALON);
+    masterLiftSpark = new CANSparkMax(RobotMap.LIFTARM_MASTER_SPARKMAX, MotorType.kBrushless);
+    slaveLiftSpark = new CANSparkMax(RobotMap.LIFTARM_SLAVE_SPARKMAX, MotorType.kBrushless);
     rotateTalon = new WPI_TalonSRX(RobotMap.ROTATE_SCISSOR_ARM);
     scissorTalon = new WPI_TalonSRX(RobotMap.SCISSOR_ARM_TALON);
+  
+    slaveLiftSpark.follow(masterLiftSpark);
   }
 
   public void driveLift(double liftSpeed, double armSpeed, boolean rotation) {
     raiseLift(liftSpeed);
     if(rotation) {
-      rotateScissorArm(armSpeed);
+      rotateScissorArm(armSpeed/3);
     } else {
       engageScissorArm(armSpeed);
     }
@@ -46,15 +51,15 @@ public class LiftSystem extends Subsystem {
   //Elevator Controlls
   
   public void raiseLift() {
-    liftTalon.set(ControlMode.PercentOutput, 1);
+    masterLiftSpark.set(1);
   }
 
   public void lowerLift() {
-    liftTalon.set(ControlMode.PercentOutput, -1);
+    masterLiftSpark.set(-1);
   }
   
   public void raiseLift(double speed) {
-    liftTalon.set(ControlMode.PercentOutput, speed);
+    masterLiftSpark.set(speed);
   }
 
   //Scissor Arm Controlls
@@ -85,10 +90,15 @@ public class LiftSystem extends Subsystem {
     rotateTalon.set(ControlMode.PercentOutput, speed);
   }
 
+  public void lockArm() {
+    rotateTalon.setNeutralMode(NeutralMode.Brake);
+  }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
     setDefaultCommand(new LiftDrive());
   }
+
 }

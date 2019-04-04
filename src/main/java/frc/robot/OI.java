@@ -16,6 +16,7 @@ import frc.robot.commands.IncreaseDrivetrainSpeed;
 import frc.robot.commands.RaiseLiftLevelOne;
 import frc.robot.commands.RaiseLiftLevelThree;
 import frc.robot.commands.RaiseLiftLevelTwo;
+import frc.robot.commands.LockArm;
 
 
 /**
@@ -67,7 +68,11 @@ public class OI {
   private Button liftLevel1 = new JoystickButton(buttonBoard, 9);
   private Button liftLevel2 = new JoystickButton(buttonBoard, 7);
   private Button liftLevel3 = new JoystickButton(buttonBoard, 6);
-  
+  private Button bigRed = new JoystickButton(buttonBoard, RobotMap.BIG_RED_BUTTON);
+
+  //Big Joystick Buttons
+  private Button lockArms = new JoystickButton(bigJoystick, RobotMap.LOCK_MOTOR);
+
   //Up and Down controlls
   private boolean liftAtLevel1 = false;
   private boolean liftAtLevel2 = false;
@@ -78,6 +83,7 @@ public class OI {
     leftBumper.whenPressed(new DecreaseDrivetrainSpeed());
     rightBumper.whenPressed(new IncreaseDrivetrainSpeed());
 
+    lockArms.whenPressed(new LockArm());
     
     liftLevel1.whenPressed(new RaiseLiftLevelOne(liftAtLevel1));
     liftLevel2.whenPressed(new RaiseLiftLevelTwo(liftAtLevel2));

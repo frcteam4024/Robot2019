@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.CameraServer;
+
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.LiftSystem;
 import frc.robot.subsystems.PodiumLift;
@@ -44,6 +46,8 @@ public class Robot extends TimedRobot {
     liftSystem = new LiftSystem();
     robotLift = new PodiumLift();
     oi = new OI();
+
+    CameraServer.getInstance().startAutomaticCapture();
 
     //chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());

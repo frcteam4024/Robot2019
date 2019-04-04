@@ -37,6 +37,7 @@ public class RobotMap {
   public static final int BIGJOYSTICK_X_AXIS = 0;
   public static final int BIGJOYSTICK_Y_AXIS = 1;
   public static final int FINGER_BUTTON = 1;
+  public static final int LOCK_MOTOR = 3;
 
   //xBox Buttons
   public static final int X_AXIS_LEFT = 0;
@@ -48,9 +49,10 @@ public class RobotMap {
   public static final int FRONT_RIGHT = 4;
   public static final int FRONT_LEFT = 6;
   public static final int BACK_RIGHT = 5;
-  public static final int BACK_LEFT = 0;
+  public static final int BACK_LEFT = 1;
 
-  public static final int LIFT_ARM_TALON = 1;
+  public static final int LIFTARM_MASTER_SPARKMAX = 7;
+  public static final int LIFTARM_SLAVE_SPARKMAX = 8;
   public static final int SCISSOR_ARM_TALON = 2;
   public static final int ROTATE_SCISSOR_ARM = 3;
 

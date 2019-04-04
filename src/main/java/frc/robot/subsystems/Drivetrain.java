@@ -44,7 +44,7 @@ public class Drivetrain extends Subsystem {
     }
 
     public void move(double yAxis, double xAxis, double zRotation) {
-        driveTrain.driveCartesian(xAxis/dividers[dIndex], yAxis/dividers[dIndex], zRotation/dividers[dIndex]);
+        driveTrain.driveCartesian(yAxis/dividers[dIndex], zRotation/dividers[dIndex], xAxis/dividers[dIndex]);
     }
 
     public boolean decreaseSpeed() {
