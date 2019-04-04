@@ -13,6 +13,10 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import frc.robot.commands.DecreaseDrivetrainSpeed;
 import frc.robot.commands.IncreaseDrivetrainSpeed;
+import frc.robot.commands.RaiseLiftLevelOne;
+import frc.robot.commands.RaiseLiftLevelThree;
+import frc.robot.commands.RaiseLiftLevelTwo;
+import frc.robot.commands.LockArm;
 
 
 /**
@@ -52,11 +56,37 @@ public class OI {
   public final Joystick bigJoystick = new Joystick(RobotMap.BIG_JOYSTICK);
   public final Joystick buttonBoard = new Joystick(RobotMap.BUTTON_BOARD); //This one is a joystick because of the knobs
   
+  //XBox Buttons
   private Button leftBumper = new JoystickButton(xboxController, 5);
   private Button rightBumper = new JoystickButton(xboxController, 6);
-  
+  private Button turnRight90 = new JoystickButton(xboxController, 2);
+  private Button turnLeft90 = new JoystickButton(xboxController, 3);
+  private Button turnRight45 = new JoystickButton(xboxController, 4);
+  private Button turnLeft45 = new JoystickButton(xboxController, 1);
+
+  //Button Board Buttons
+  private Button liftLevel1 = new JoystickButton(buttonBoard, 9);
+  private Button liftLevel2 = new JoystickButton(buttonBoard, 7);
+  private Button liftLevel3 = new JoystickButton(buttonBoard, 6);
+  private Button bigRed = new JoystickButton(buttonBoard, RobotMap.BIG_RED_BUTTON);
+
+  //Big Joystick Buttons
+  private Button lockArms = new JoystickButton(bigJoystick, RobotMap.LOCK_MOTOR);
+
+  //Up and Down controlls
+  private boolean liftAtLevel1 = false;
+  private boolean liftAtLevel2 = false;
+  private boolean liftAtLevel3 = false;
+
+
   public OI() {
     leftBumper.whenPressed(new DecreaseDrivetrainSpeed());
     rightBumper.whenPressed(new IncreaseDrivetrainSpeed());
+
+    lockArms.whenPressed(new LockArm());
+    
+    liftLevel1.whenPressed(new RaiseLiftLevelOne(liftAtLevel1));
+    liftLevel2.whenPressed(new RaiseLiftLevelTwo(liftAtLevel2));
+    liftLevel3.whenPressed(new RaiseLiftLevelThree(liftAtLevel3));
   }
 }

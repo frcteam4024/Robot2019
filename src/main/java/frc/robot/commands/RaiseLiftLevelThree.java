@@ -8,37 +8,43 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
  */
-public class DecreaseDrivetrainSpeed extends InstantCommand {
+public class RaiseLiftLevelThree extends InstantCommand {
+
+  private boolean isUp;
+
   /**
    * Add your docs here.
    */
-  public DecreaseDrivetrainSpeed() {
+  public RaiseLiftLevelThree() {
     super();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.drivetrain);
+    requires(Robot.liftSystem);
+  }
+
+  public RaiseLiftLevelThree(boolean liftLevel) {
+    super();
+    isUp = liftLevel;
+    requires(Robot.liftSystem);
   }
 
   // Called once when the command executes
   @Override
   protected void initialize() {
-    boolean executed = Robot.drivetrain.decreaseSpeed();
-    // SendableChooser<InstantCommand> result = new SendableChooser<>();
-    // if (executed) {
-    //   result.setDefaultOption("Speed is as low as possible.", new DecreaseDrivetrainSpeed());
-    //   SmartDashboard.putData(result);
-    // } else {
-    //   result.setDefaultOption("Speed was decreased.", new DecreaseDrivetrainSpeed());
-    //   SmartDashboard.putData(result);
-    // }
+    setTimeout(RobotMap.TIME_TO_LEVEL3);
+    while(!isTimedOut()) {
+      if (isUp) {
+        Robot.liftSystem.lowerLift();
+      } else {
+        Robot.liftSystem.raiseLift();
+      }
+    }
   }
 
 }

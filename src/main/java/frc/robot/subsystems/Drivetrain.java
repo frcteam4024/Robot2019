@@ -4,10 +4,11 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.drive.RobotDriveBase;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveCartesian;
 
-public class DriveTrain extends Subsystem {
+public class Drivetrain extends Subsystem {
 
     private WPI_TalonSRX frontRight = null;
     private WPI_TalonSRX frontLeft = null;
@@ -19,13 +20,14 @@ public class DriveTrain extends Subsystem {
     private int dIndex = 0;
     private int[] dividers = {1, 2, 4};
 
-    public DriveTrain() {
+    public Drivetrain() {
         /*
          * The declaration numbers are to keep track of which motor controller is which.
          * Using the RobotMap class reduces the number of unexplained numbers (also
          * called magic numbers) in the code. This applies for all sorts of things
          * besides motor controllers.
          */
+                
         frontRight = new WPI_TalonSRX(RobotMap.FRONT_RIGHT);
         frontLeft = new WPI_TalonSRX(RobotMap.FRONT_LEFT);
         backRight = new WPI_TalonSRX(RobotMap.BACK_RIGHT);
@@ -33,6 +35,7 @@ public class DriveTrain extends Subsystem {
 
         driveTrain = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
 
+        driveTrain.setDeadband(0.1);
     }
 
     @Override
@@ -41,7 +44,7 @@ public class DriveTrain extends Subsystem {
     }
 
     public void move(double yAxis, double xAxis, double zRotation) {
-        driveTrain.driveCartesian(yAxis/dividers[dIndex], xAxis/dividers[dIndex], zRotation/dividers[dIndex]);
+        driveTrain.driveCartesian(yAxis/dividers[dIndex], zRotation/dividers[dIndex], xAxis/dividers[dIndex]);
     }
 
     public boolean decreaseSpeed() {

@@ -30,15 +30,15 @@ public class DriveCartesian extends Command {
     double ySpeed = Robot.oi.xboxController.getRawAxis(RobotMap.Y_AXIS_LEFT);
     double xSpeed = Robot.oi.xboxController.getRawAxis(RobotMap.X_AXIS_LEFT);
     double zRotation = Robot.oi.xboxController.getRawAxis(RobotMap.X_AXIS_RIGHT);
-    if (!(ySpeed > 0.3)) {
-      ySpeed = 0;
-    }
-    if (!(xSpeed > 0.3)) {
-      xSpeed = 0;
-    }
-    if (!(zRotation > 0.3)) {
-      zRotation = 0;
-    }
+    // if (!(Math.abs(ySpeed) > 0.3)) {
+    //   ySpeed = 0;
+    // }
+    // if (!(Math.abs(xSpeed) > 0.3)) {
+    //   xSpeed = 0;
+    // }
+    // if (!((Math.abs(zRotation) > 0.3)) {
+    //   zRotation = 0;
+    // }
     Robot.drivetrain.move(ySpeed, xSpeed, zRotation);
   }
 

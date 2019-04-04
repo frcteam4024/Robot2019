@@ -8,37 +8,26 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Robot;
 
 /**
  * Add your docs here.
  */
-public class DecreaseDrivetrainSpeed extends InstantCommand {
+public class LockArm extends InstantCommand {
   /**
    * Add your docs here.
    */
-  public DecreaseDrivetrainSpeed() {
+  public LockArm() {
     super();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.drivetrain);
   }
 
   // Called once when the command executes
   @Override
   protected void initialize() {
-    boolean executed = Robot.drivetrain.decreaseSpeed();
-    // SendableChooser<InstantCommand> result = new SendableChooser<>();
-    // if (executed) {
-    //   result.setDefaultOption("Speed is as low as possible.", new DecreaseDrivetrainSpeed());
-    //   SmartDashboard.putData(result);
-    // } else {
-    //   result.setDefaultOption("Speed was decreased.", new DecreaseDrivetrainSpeed());
-    //   SmartDashboard.putData(result);
-    // }
+    Robot.liftSystem.lockArm();
   }
 
 }
